@@ -6,4 +6,5 @@ These installers are all submitted to the Lutris game database, however due to m
 
 ### Installers
 [I Spy Treasure Hunt](./i-spy-treasure-hunt)
+
 [Ultimate Yahtzee](./ultimate-yahtzee)
