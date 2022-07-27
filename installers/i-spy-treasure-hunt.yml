@@ -1,7 +1,11 @@
 name: I Spy Treasure Hunt
 game_slug: i-spy-treasure-hunt
+year: 2001
+user: bigduckie
 version: CD
 slug: i-spy-treasure-hunt-cd
+notes: "You must have the I Spy Treasure Hunt CD either inserted into a drive, or mounted through CDEmu.\n\n
+    This installer sets up a virtual drive in Wine to allow the game to run without the disc present."
 runner: wine
 
 script:
@@ -14,7 +18,7 @@ script:
       requires: CDHunt.ico
   - task:
       name: wineexec
-      executable: "$DISC/Setup.EXE"
+      executable: $DISC/Setup.EXE
       args: /S
   - merge:
       src: $DISC
