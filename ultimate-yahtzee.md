@@ -7,8 +7,8 @@
 ### Installation
 To install the game, run the following command:
 
-```bash
-lutris -i https://raw.githubusercontent.com/big-duckie/lutris-installers/main/installers/yahtzee.yml
+```
+lutris -i https://raw.githubusercontent.com/big-duckie/lutris-installers/main/installers/ultimate-yahtzee.yml
 ```
 
 The install script will walk you through the process, and will provide links to the files it requires.
