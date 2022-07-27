@@ -1,0 +1,42 @@
+name: Ultimate Yahtzee
+game_slug: ultimate-yahtzee
+year: 1996
+user: bigduckie
+version: CD
+slug: ultimate-yahtzee-cd
+notes: "You must have the Yahtzee Ultimate CD either inserted into a drive, or mounted through CDEmu.\n\n
+  You also require the InstallShield 32-bit Generic Installer.\n
+  https://community.pcgamingwiki.com/files/file/111-installshield-3-32-bit-generic-installer/\n\n
+  To enable CD Audio, you must set the D: drive to the location of your mounted disc. Do this in the \"Wine Configuration\" window."
+runner: wine
+
+script:
+  files:
+  - altinstaller: N/A:Select InstallShield 3 32-bit Generic Installer from https://community.pcgamingwiki.com/files/file/111-installshield-3-32-bit-generic-installer/
+  game:
+    arch: win32
+    exe: drive_c/Program Files/Hasbro/Yahtzee/Yahtzee.exe
+    prefix: $GAMEDIR
+  installer:
+  - insert-disc:
+      requires: install.exe
+  - merge:
+      dst: $CACHE
+      src: $DISC/setup
+  - execute:
+      command: chmod -R 775 "$CACHE"
+  - merge:
+      dst: $CACHE
+      src: altinstaller
+  - task:
+      name: wineexec
+      executable: $CACHE/setup32.exe
+      prefix: "$GAMEDIR"
+  - write_config:
+      data:
+        setup:
+          anim: D:\yahtzee.smk
+          cdid: D:\yahtzee.id
+          credits: D:\credits.smk
+      file: $GAMEDIR/drive_c/windows/yahtzee.ini
+      merge: true
