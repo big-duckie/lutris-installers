@@ -1,0 +1,33 @@
+name: I Spy Treasure Hunt
+game_slug: i-spy-treasure-hunt
+version: CD
+slug: i-spy-treasure-hunt-cd
+runner: wine
+
+script:
+  game:
+    arch: win32
+    exe: drive_c/Program Files/Scholastic/I SPY Treasure Hunt/ISPY_Treasure.exe
+    prefix: $GAMEDIR
+  installer:
+  - insert-disc:
+      requires: CDHunt.ico
+  - task:
+      name: wineexec
+      executable: "$DISC/Setup.EXE"
+      args: /S
+  - merge:
+      src: $DISC
+      dst: $GAMEDIR/drive_d/
+  - execute:
+      command: chmod -R 755 "$GAMEDIR/drive_d"
+  - execute:
+      command: rm -f "$GAMEDIR/dosdevices/d:" "$GAMEDIR/dosdevices/d::"
+  - execute:
+      command: ln -s "$GAMEDIR/drive_d" "$GAMEDIR/dosdevices/d:"
+  - write_file:
+      file: $GAMEDIR/drive_d/.windows-label
+      content: "TREASURE_HUNT"
+  - write_file:
+      file: $GAMEDIR/drive_d/.windows-serial
+      content: "7789DC38"

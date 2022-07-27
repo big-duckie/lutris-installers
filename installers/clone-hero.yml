@@ -1,0 +1,22 @@
+name: Clone Hero
+game_slug: clone-hero
+version: v0.9.488
+slug: clone-hero
+runner: linux
+
+script:
+  game:
+    exe: clonehero-launcher
+  files:
+    appimage: https://launcher-dl.clonehero.net/Clone%20Hero%20Launcher-0.9.488.AppImage
+  installer:
+    - merge:
+        src: appimage
+        dst: $CACHE/
+    - execute:
+        file: $CACHE/Clone Hero Launcher-0.9.488.AppImage
+        args: --appimage-extract
+        description: Unpacking AppImage
+    - merge:
+        src: $CACHE/squashfs-root/
+        dst: $GAMEDIR
