@@ -5,4 +5,5 @@ This is a collection of installers for Lutris that I have written. Feel free to 
 These installers are all submitted to the Lutris game database, however due to moderation issues, it can take months for scripts to get approved.
 
 ### Installers
+[I Spy Treasure Hunt](./i-spy-treasure-hunt)
 [Ultimate Yahtzee](./ultimate-yahtzee)
